@@ -8,22 +8,23 @@
 + **IMAP** - Internet Messaging Access Protocol - syncs client(s) w mail server - managing/retrieving (limited space)
 + **POP3** - Post Office Protocol - not synced, downloaded, suited to single client device
 + **SSH** - used over shell, communicating w OS, remote access to other computers, built-in auth via port 22 (sometimes blocked by firewall), public key/private key, or user/password
-
+___
 ## commands
-Ubuntu - installing server-side
-`sudo apt-get install openssh-server`
-Get IP address
-`ifconfig`
-user = account e.g. default root
-host = ip address of the computer you want to connect to
-[requires ssh client on Windows < 10 e.g. PuTTY]
-`ssh {user}@{host}`
-Copying/transferring files eg via rsync https://rsync.samba.org/
-e.g. ` rsync -av . {user}@{host}:~/new-folder-name`
-
+Ubuntu - installing server-side  
+`sudo apt-get install openssh-server`  
+Get IP address  
+`ifconfig`  
+user = account e.g. default root  
+host = ip address of the computer you want to connect to  
+[requires ssh client on Windows < 10 e.g. PuTTY]  
+`ssh {user}@{host}`  
+Copying/transferring files eg via rsync https://rsync.samba.org/  
+e.g. ` rsync -av . {user}@{host}:~/new-folder-name`  
+___
 ## techniques in ssh
 + symmetrical encryption
   shared key to decrypt message - via key exchange algorithm to prevent interception. key unique to session
+
 + asymmetrical encryption
   uses public/private key pairs, one-way relationship
 
@@ -34,13 +35,17 @@ e.g. ` rsync -av . {user}@{host}:~/new-folder-name`
   - man in the middle risk? 'impersonation' - shared secrets with both sides of the targeted message exchange
   - combined with RSA/ signed hash => signature verification
   - only RSA? = if RSA is ever compromised, everything is decryptable (1-2 yrs), whereas DH is per session ('ephemeral Diffie Hellman key')
-  ### elliptic curve Diffie Hellman
++ elliptic curve Diffie Hellman
   - elliptic curve cryptography - curves in 2 dimensions
   y squared = x cubed  + ax + b
   - generator = a point on the curve. adds g to itself = tangent intercepts curve (mathematically more efficient = shorter key sizes)
-  ### RSA
++ RSA
   - RSA (Rivest–Shamir–Adleman) = public-key cryptosystem for secure data transmission. public encryption key & private decryption key ("factoring problem" = factorization of product of 2 large primes) Slow/not v efficient
-  - IKE (Internet Key Exchange) = IPsec based tunnelling protocol -> secure VPN communication channel. negotiation => Security Association (SA). Builds on Oakley protocol + ISAKMP = Internet Security Association and Key Management Protocol. IKEv2 = server certificate authentication (vs Man in the Middle, DoS attacks)
++ IKE (Internet Key Exchange)
+  IPsec based tunnelling protocol -> secure VPN communication channel. negotiation => Security Association (SA). Builds on Oakley protocol + ISAKMP = Internet Security Association and Key Management Protocol. IKEv2 = server certificate authentication (vs Man in the Middle, DoS attacks)
 + hashing
   HMAC = hash-based message authentication code w cryptographic hash function & secret cryptographic key. data integrity + authentication. e.g. SHA-256, SHA-3 (used in JWTs). MAC = hash generated from symmetric key, packet sequence number + message contents. matching hashes = proves nothing tampered with
-  + authentication via password or ssh
++ authentication via password or RSA
+  `ssh-keygen -t rsa -b 4096 -C "test@gmail.com"`
+  add to authorized_keys via nano
+  `ssh-add {key}`
