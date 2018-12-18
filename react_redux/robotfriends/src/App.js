@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Card from './Components/Card.js';
 
 class App extends Component {
   render() {
@@ -6,6 +7,7 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <h1>initial commit</h1>
+          <Card />
         </header>
       </div>
     );
