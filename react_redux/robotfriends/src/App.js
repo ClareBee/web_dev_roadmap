@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './app.css';
 import CardList from './Components/CardList';
 import Searchbox from './Components/Searchbox';
 import { robots } from './robots.js';
@@ -15,7 +16,7 @@ class App extends Component {
   onSearchChange = (e) => {
     this.setState({searchField: e.target.value});
   }
-  
+
   render() {
     const filteredRobots = this.state.robots.filter(robot => {
       return robot.name.toLowerCase().includes(this.state.searchField.toLowerCase());
