@@ -15,3 +15,7 @@ aims = fast time to first meaningful paint & fast time to interactive
 ## 3rd party libraries
 usu include production build
 create-react-app `npm run build` excludes anything not needed in production e.g. logger
+
+## code-splitting
+route- or component-level splitting
+e.g. [React Loader](https://github.com/jamiebuilds/react-loadable)
