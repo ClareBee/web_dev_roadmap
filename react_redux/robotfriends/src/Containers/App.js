@@ -14,7 +14,7 @@ class App extends Component {
   }
 
   render() {
-    const { robots, isPending, error, searchField, onSearchChange } = this.props;
+    const { robots, isPending, searchField, onSearchChange } = this.props;
     if (isPending){
       return <h1>Loading...</h1>
     } else {
