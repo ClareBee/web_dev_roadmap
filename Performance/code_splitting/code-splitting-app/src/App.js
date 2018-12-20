@@ -8,22 +8,41 @@ class App extends Component {
   constructor(props){
     super(props);
     this.state = {
-      route: 'page1'
+      route: 'page1',
+      component: ''
     }
   }
 
   onRouteChange = (route) => {
-    this.setState({route: route})
+    // code splitting thanks to webpack & dynamic imports
+    if (route === 'page1'){
+      this.setState({route: route})
+    } else if (route === 'page2'){
+      // async
+      import('./components/page2')
+      .then((Page2) => {
+        this.setState({
+          route: route,
+          component: Page2.default
+        });
+      });
+    } else if (route === 'page3'){
+      import('./components/page3')
+      .then((Page3) => {
+        this.setState({
+          route: route,
+          component: Page3.default
+        });
+      });
+    }
   }
 
   render() {
     const { route } = this.state;
-    if(route === 'page1'){
+    if (route === 'page1'){
       return <Page1 onRouteChange={this.onRouteChange} />
-    } else if (route === 'page2'){
-      return <Page2 onRouteChange={this.onRouteChange} />
     } else {
-      return <Page3 onRouteChange={this.onRouteChange} />
+      return <this.state.component onRouteChange={this.onRouteChange} />
     }
   }
 }
