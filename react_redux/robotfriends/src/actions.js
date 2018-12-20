@@ -5,7 +5,9 @@ export const setSearchField = (text) => ({
   payload: text
 });
 
-export const requestRobots = (dispatch) => {
+// higher order function - function returning a function
+// provides dispatch to promise thanks to thunk
+export const requestRobots = () => (dispatch) => {
   dispatch({ type: actionTypes.REQUEST_ROBOTS_PENDING});
   fetch("https://jsonplaceholder.typicode.com/users")
   .then(response => response.json())
