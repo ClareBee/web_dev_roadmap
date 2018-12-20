@@ -1,3 +1,9 @@
+# Code optimisation basics
++ only load what's needed (code-splitting, [tree-shaking](https://developers.google.com/web/fundamentals/performance/optimizing-javascript/tree-shaking/))
++ avoid blocking main thread
++ avoid memory leaks
++ avoid multiple re-rendering
+
 ## JS
 cost of JS =
 1) time for JavaScript Engine in browser parsing/compiling the code
@@ -9,7 +15,7 @@ cost of JS =
 e.g. www.webpagetest.com => report shows processing breakdown
 - script tag in html is render-blocking
 
-## optimization
+## optimisation
 aims = fast time to first meaningful paint & fast time to interactive
 
 ## 3rd party libraries

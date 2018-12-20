@@ -6,6 +6,7 @@
 ## transfer
 - minimize files e.g. UglifyJS as part of a build process (e.g. via webpack)
 - minimize images
+
 ### raster images
 * jpeg - photos, many colours, but don't allow for transparency (unlike gif/png) & large size
 * gif - limited colours, good for small animations
