@@ -18,6 +18,17 @@ const mockFetch = jest.fn()
     })
   }))
 ```
+including `npm install --save-dev redux-mock-store`
+in test:
+```javascript
+import configureMockStore from 'redux-mock-store';
+with thunkMiddleware
+
+const mockStore = configureMockStore([thunkMiddleware]);
+```
+
+cf server/http mocking with [nock](https://github.com/nock/nock) and
+[SuperTest](https://github.com/visionmedia/supertest)
 ## Snapshot testing
 `.toMatchSnapshot()`
 - detects any changes, ideal for stateless 'dumb' components

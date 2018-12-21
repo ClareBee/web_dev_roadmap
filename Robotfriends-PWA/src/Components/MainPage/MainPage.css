@@ -11,3 +11,18 @@ h1 {
   font-weight: 200;
   color: #0ccac4;
 }
+
+#counter {
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#counter:hover {
+  color: #0ccac4;
+  opacity: 0.9;
+}
+
+#counter:focus {
+  outline: none;
+}
