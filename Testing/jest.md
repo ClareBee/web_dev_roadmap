@@ -19,3 +19,7 @@ const mockFetch = jest.fn()
   }))
 ```
 ## Snapshot testing
+`.toMatchSnapshot()`
+- detects any changes, ideal for stateless 'dumb' components
+- `u` to update failing snapshots for intentional changes
+- `npm test -- --coverage` generates coverage report
