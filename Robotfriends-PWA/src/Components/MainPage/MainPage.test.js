@@ -39,3 +39,20 @@ it('filters robots correctly', () => {
     email: 'bobby@example.com'
   }]);
 });
+
+it('filters robots correctly if no match found', () => {
+  const mockProps3 = {
+    onRequestRobots: jest.fn(),
+    robots: [{
+      id: 1,
+      name: 'Bob',
+      username: 'Bobby',
+      email: 'bobby@example.com'
+    }],
+    searchField: 'sally',
+    isPending: false
+  }
+  const wrapper3 = shallow(<MainPage {...mockProps3}/>)
+  // instance gives access to methods
+  expect(wrapper3.instance().filterRobots()).toEqual([]);
+});
