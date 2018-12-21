@@ -22,3 +22,6 @@ TL;DR
 4) responsive
 5) works cross-browser
 6) fast first load
+
+# tools
+https://developers.google.com/web/updates/2016/02/font-display
