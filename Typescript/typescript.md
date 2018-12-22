@@ -36,5 +36,7 @@ Built in as of v.2.1
 `npm install --save typescript @types/node @types/react @types/react-dom @types/jest`
 - will need to add Redux/Redux logger etc.
 - includes types for React eg `React.SFC<ComponentProps>` = stateless functional component
-- `as HTMLElement` - built in interface
+- `as HTMLElement` - built-in interface
 - e.g. for HOC => `children: JSX.Element`
+- main types = Interfaces
+- events e.g. `searchChange(event: React.SyntheticEvent<HTMLInputElement>): void` => pass into component as named props interface
