@@ -102,3 +102,6 @@ scrypt - password-based key-derivation function (PBKDF - Colin Percival)
 
 ## Rate Limiting
 e.g. Redis & IP throttling, npm packages (e.g. https://www.npmjs.com/package/express-rate-limit)
+
+## Authentication
+- passwords, MFA, session-management, cookies, tokens
