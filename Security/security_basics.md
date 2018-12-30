@@ -73,3 +73,32 @@ for Express apps
 [helmet](https://github.com/helmetjs/helmet)
 `npm i helmet`
 (more on headers: (https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers))
+
+## Access Control
+through authentication
+- 'Principle of least privilege'
+CORS - cross origin resource sharing
+e.g. corsOptions, whitelisting - [MDN on CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS)
+
+## Data Management
+- backups (never have one point of failure)
+- encryption esp in transition of sensitive data
+e.g. passwords => bcrypt, scrypt, Aragon2
+e.g. database => pgcrypto (encrypt few columns in postgres db)
+
+hash algorithms - (speed, but not too quick - SHA-256; any change should affect whole - avalanche effect; avoid hash collisions - 'pigeon hole principle' e.g. MD5 broken)
+salt - large sequence of additional characters
+bcrypt - password hashing  (`.hash()` and `.compare()` functions)
+
+common attacks:
++ brute force (repeat attempts - computationally expensive, low memory requirements)
++ rainbow table (table of pre-hashed passwords - computationally cheap but high memory requirements)
+
+scrypt - password-based key-derivation function (PBKDF - Colin Percival)
+ - hash + salt + number of iterations passed into function
+ - scrypt also takes in: N-CPU cost param, R-Memory cost param, P-parallelisation param, dkLen-output length
+ - function creates password key using loop => slow
+ - 1) creates HMAC = hashed message authentication code (digital signature) 2) performs PBKDF2 function 3) starts loop - memory-hard function SMIX (BlockSalsa, Integerify, BlockXOR) 4) repeates PBKDF2 function
+
+## Rate Limiting
+e.g. Redis & IP throttling, npm packages (e.g. https://www.npmjs.com/package/express-rate-limit)
