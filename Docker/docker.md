@@ -16,5 +16,6 @@ FROM node:carbon-alpine
 RUN apk update && apk add bash
 CMD ["/bin/bash"]
 ```
+(Alpine needs bash installing first)
 `docker build -t mycontainer .`
 `docker run -it mycontainer` => takes you into bash shell for container (tty environment)
