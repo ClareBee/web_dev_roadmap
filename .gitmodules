@@ -1,6 +1,0 @@
-[submodule "smart-brain-api"]
-	path = smart-brain-api
-	url = git@github.com:aneagoie/smart-brain-api.git
-[submodule "smart-brain"]
-	path = smart-brain
-	url = git@github.com:aneagoie/smart-brain.git
