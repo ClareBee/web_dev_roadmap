@@ -5,7 +5,6 @@ if (result.error) {
   throw result.error
 }
 
-console.log(result.parsed)
 const express = require('express');
 const bodyParser = require('body-parser');
 const bcrypt = require('bcrypt-nodejs');
