@@ -1,0 +1,4 @@
+/* example of overriding bootstrap - usu avoid using !important */
+.hover-black:hover {
+  background-color: black !important;
+}
