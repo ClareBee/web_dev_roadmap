@@ -26,7 +26,7 @@ const handleProfileUpdate = (req, res, db) => {
         res.status(400).json('Unable to update')
       }
     })
-    .catch(err => res.status(400.json('error updating user'));
+    .catch(err => res.status(400).json('error updating user'));
 }
 
 module.exports = {
