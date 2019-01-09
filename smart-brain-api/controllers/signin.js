@@ -1,3 +1,5 @@
+var jwt = require('jsonwebtoken');
+
 const handleSignin = (db, bcrypt, req, res) => {
   const { email, password } = req.body;
   if (!email || !password) {
@@ -22,14 +24,32 @@ const handleSignin = (db, bcrypt, req, res) => {
 const getAuthTokenId = () => {
   console.log('auth ok')
 }
+
+const signToken = (email) => {
+  console.log(email)
+  const jwtPayload = { email };
+  return jwt.sign(jwtPayload, 'secret', { expiresIn: '2 days' });
+}
+
+const createSessions = (user) => {
+  // jwt
+  const { email, id } = user;
+  const token = signToken(email);
+  console.log(token)
+  return { success: 'true', userId: id, token }
+}
 // dependency injection
-const signinAuthentication = (db, becrypt) => (req, res) => {
+const signinAuthentication = (db, bcrypt) => (req, res) => {
   const { authorization } = req.headers;
-  return authorization ?
-  getAuthTokenId() :
-  handleSignin(db, becrypt, req, res)
-  .then(data => res.json(data))
-  .catch(err => res.status(400).json(err))
+  console.log('auth')
+  return authorization ? getAuthTokenId() :
+    handleSignin(db, bcrypt, req, res)
+      .then(data => {
+        console.log('data', data)
+        return data.id && data.email ? createSessions(data) : Promise.reject(data)
+      })
+      .then(session => res.json(session))
+      .catch(err => res.status(400).json(err))
 }
 
 module.exports = {
