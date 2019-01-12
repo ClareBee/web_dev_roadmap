@@ -19,7 +19,7 @@ class Signin extends React.Component {
   }
 
   saveAuthTokenInSession = (token) => {
-    // on the browser 
+    // on the browser
     window.sessionStorage.setItem('token', token);
   }
 
@@ -36,8 +36,22 @@ class Signin extends React.Component {
       .then(data => {
         if (data.userId && data.success === 'true') {
           this.saveAuthTokenInSession(data.token);
-          this.props.loadUser(data.userId);
-          this.props.onRouteChange('home');
+          fetch(`http://localhost:3000/profile/${data.userId}`, {
+            method: 'get',
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': data.token
+            }
+          })
+          .then(res => res.json())
+          .then(user => {
+            if(user && user.email){
+              console.log(user)
+              this.props.loadUser(user)
+              this.props.onRouteChange('home')
+            }
+          })
+          .catch(err => console.log(err))
         }
       })
   }

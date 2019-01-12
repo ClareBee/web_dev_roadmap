@@ -36,7 +36,6 @@ const getAuthTokenId = (req, res) => {
 }
 
 const signToken = (email) => {
-  console.log(email)
   const jwtPayload = { email };
   return jwt.sign(jwtPayload, 'secret', { expiresIn: '2 days' });
 }
