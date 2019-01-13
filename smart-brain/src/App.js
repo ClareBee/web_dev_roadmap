@@ -34,6 +34,8 @@ const initialState = {
   isProfileOpen: false,
   user: {
     id: '',
+    age: '',
+    pet: '',
     name: '',
     email: '',
     entries: 0,
@@ -89,10 +91,13 @@ class App extends Component {
     this.setState({user: {
       id: data.id,
       name: data.name,
+      age: data.age,
+      pet: data.pet,
       email: data.email,
       entries: data.entries,
       joined: data.joined
     }})
+    console.log('loadUser', data)
   }
 
   calculateFaceLocation = (data) => {
