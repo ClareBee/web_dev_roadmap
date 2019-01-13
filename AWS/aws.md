@@ -39,3 +39,4 @@ For dev:
 `sls invoke local --function {name of function}`
 To create endpoint (using Amazon's Gateway API):
  - in `serverless.yml` = create an `events:` block w method and path
+ `sls deploy --stage production`
