@@ -27,3 +27,6 @@ BUT:
 - risky re: sensitive data inside JWT (vulnerability to Cross Site Scripting (XSS) and Cross-Site Request Forgery (XSRF or CSRF))
 
 - signed cryptographically NOT encrypted (see https://jwt.io/) - therefore use JWE JSON Web Encryption if using sensitive data
+
+https://auth0.com/blog/ten-things-you-should-know-about-tokens-and-cookies/
+Browser API: localStorage, sessionStorage, token in key-value => sent to server via Authorization header + Bearer
