@@ -11,6 +11,14 @@ class Rank extends React.Component {
   componentDidMount(){
     this.generateEmoji(this.props.entries)
   }
+
+  componentDidUpdate(prevProps, prevState){
+    if(prevProps.entries === this.props.entries && prevProps.name === this.props.name){
+      return null;
+    }
+    this.generateEmoji(this.props.entries);
+  }
+
   generateEmoji = (entries) => {
     console.log(process.env)
     const lambdaUrl = `https://${process.env.REACT_APP_LAMBDA_URL}/production/rank?rank=${entries}`

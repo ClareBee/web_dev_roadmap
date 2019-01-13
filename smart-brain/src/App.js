@@ -60,6 +60,8 @@ class App extends Component {
       })
       .then(res => res.json())
       .then(data => {
+        console.log('data', data)
+        console.log('token2', token)
         if(data && data.id){
           fetch(`http://localhost:3000/profile/${data.id}`, {
             method: 'get',

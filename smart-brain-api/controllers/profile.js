@@ -4,9 +4,9 @@ const handleProfileGet = (req, res, db) => {
   db.select('*').from('users').where({id})
     .then(user => {
       if (user.length) {
-        res.json(user[0])
+        return res.json(user[0])
       } else {
-        res.status(400).json('Not found')
+        return res.status(400).json('Not found')
       }
     })
     .catch(err => res.status(400).json('error getting user'))
@@ -18,15 +18,17 @@ const handleProfileUpdate = (req, res, db) => {
   // knex syntax: https://github.com/tgriesser/knex
   db('users')
     .where({ id })
-    .update({ name })
-    .then(res => {
+    .update({ name, age, pet })
+    .then(() => {
       if(res){
-        res.json('success')
+        return res.json('success')
       } else {
-        res.status(400).json('Unable to update')
+        return res.status(400).json('Unable to update')
       }
     })
-    .catch(err => res.status(400).json('error updating user'));
+    .catch(err => {
+      console.log(err)
+    });
 }
 
 module.exports = {
