@@ -12,7 +12,10 @@ class Rank extends React.Component {
     this.generateEmoji(this.props.entries)
   }
   generateEmoji = (entries) => {
-    fetch(`https://${process.env.AWS_FUNCTION_URL}/production/rank?rank=${entries}`)
+    console.log(process.env)
+    const lambdaUrl = `https://${process.env.REACT_APP_LAMBDA_URL}/production/rank?rank=${entries}`
+    console.log(lambdaUrl)
+    fetch(lambdaUrl)
       .then(res => res.json())
       .then(data => this.setState({emoji: data.input}))
       .catch(err => console.log(err));

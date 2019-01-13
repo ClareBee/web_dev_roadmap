@@ -11,6 +11,8 @@ import Modal from './components/Modal/Modal';
 import Profile from './components/Profile/Profile';
 import './App.css';
 
+require('dotenv').config()
+
 const particlesOptions = {
   particles: {
     number: {
