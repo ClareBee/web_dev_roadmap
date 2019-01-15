@@ -1,5 +1,5 @@
 ## CDNs
-Content Delivery Networks
+Content Delivery Networks (aka edge caching)
 e.g. Cloudflare, CloudFront, Azure Cdn
 Initial request cached onto network of CDN => closer proximity to user for subsequent requests
  - faster page load
@@ -22,3 +22,11 @@ DEFLATE = lossless data compression algorithm + associated file format using com
 zlib = abstraction of DEFLATE?]
 = data format specification for data streams compressed with a specific combination of general-purpose LZ77 lossless compression algorithm, Huffman coding and 2nd order context modelling.
 = originally re: WOFF2 web fonts
+
+## Database Scaling
+1. identify inefficient queries (sorting/indexing = allows for binary search)
+2. increase memory
+3. vertical scaling (Redis, Memcached)
+4. sharding - i.e. horizontal db partitioning
+5. more dbs
+6. db type
