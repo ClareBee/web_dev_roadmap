@@ -1,6 +1,18 @@
 ## Continuous Integration, Continuous Delivery, cf Continuous Deployment
-- frequent PRs, automatic tests/linting/TypeScript
+- frequent PRs, automatic tests/linting/Prettier/TypeScript
+e.g. w pre-commit hooks w Husky
+`npm install prettier --save-dev --save-exact`
+`npm install pretty-quick husky --dev`
+Then in package.json:
+```json
+{
+  "scripts":{
+    "precommit": "pretty-quick --staged"
+  }
+}
+```
 - acceptance tests, frequent deployments
+- smoke tests e.g. Telerik TestStudio, monitoring eg New Relic
 
 e.g. CircleCI, Travis CI (hosted servers), Jenkins (managed servers)
 
